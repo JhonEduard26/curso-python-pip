@@ -6,3 +6,4 @@ def get_data(path):
     res = requests.get(url)
     data = res.json()
     print(data)
+    print(type(data))
