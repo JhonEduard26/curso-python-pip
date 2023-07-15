@@ -1,8 +1,20 @@
-import api
+from api import get_data
+from fastapi import FastAPI
+
+url = 'https://jsonplaceholder.typicode.com/'
+
+app = FastAPI()
 
 
-def main():
-    api.get_data('todos')
+@app.get('/')
+def say_hello():
+    return {'Hello': 'World'}
 
-if __name__ == '__main__':
-    main()
+
+@app.get('/todos')
+def read_todos():
+    data = get_data('todos')
+    return {
+        'ok': True,
+        'data': data
+    }
